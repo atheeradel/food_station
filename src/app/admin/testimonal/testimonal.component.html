@@ -1,0 +1,31 @@
+<app-admindashboard></app-admindashboard>
+
+<div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-10 offset-md-2"> 
+<div class="body-wrapper d-flex justify-content-center align-items-center" >
+    <div class="container-fluid">
+        <table class="table table-bordered m-5 text-center ">
+            <thead class="bg-dark text-white">
+              <tr class="ml-5 ">
+                <th scope="col">Testimonal Description</th>
+                <th scope="col">Testimonal State</th>
+                <th scope="col">Testimonal Controls </th>
+              
+              </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let test of admin.testimonal" >
+                    <td>{{test.testimonaldescription}}</td>
+                    <td>{{ getTestState(test.testimonalstate) }}</td>
+                    <td> <button type="button" class="btn btn-primary" (click)="updatestate(test,1)">Accept</button>  <button type="button" class="btn btn-danger" (click)="updatestate(test,2)">Reject</button></td>
+                    
+                  </tr>
+             
+            </tbody>
+        </table>
+    </div>
+</div>
+</div></div>

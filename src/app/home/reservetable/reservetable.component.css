@@ -1,0 +1,135 @@
+/* General form styling */
+.reservation-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.reservation-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.reservation-form .form-group {
+    margin-bottom: 15px;
+}
+
+.reservation-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #666;
+}
+
+.reservation-form input[type="text"],
+.reservation-form input[type="email"],
+.reservation-form input[type="number"],
+.reservation-form input[type="date"],
+.reservation-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.reservation-form input[type="text"]:focus,
+.reservation-form input[type="email"]:focus,
+.reservation-form input[type="number"]:focus,
+.reservation-form input[type="date"]:focus,
+.reservation-form select:focus {
+    border-color: #555;
+    outline: none;
+}
+
+.reservation-form .available-slots {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reservation-form .available-slots button {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.reservation-form .available-slots button:hover {
+    background-color: #ddd;
+    border-color: #aaa;
+}
+
+.reservation-form .available-slots button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.reservation-form .price-summary {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.reservation-form .payment-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.reservation-form .payment-options label {
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+.reservation-form .form-group.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.reservation-form .form-group.checkbox input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.reservation-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #c94651;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.reservation-form button[type="submit"]:hover {
+    background-color: #807977;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .reservation-form {
+        padding: 15px;
+    }
+
+    .reservation-form .payment-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reservation-form .payment-options label {
+        margin-bottom: 10px;
+    }
+}

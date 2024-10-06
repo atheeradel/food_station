@@ -1,0 +1,123 @@
+<app-admindashboard></app-admindashboard>
+<div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 offset-md-2"> 
+<div class="body-wrapper d-flex justify-content-center align-items-center" >
+    <div class="container-fluid">
+        <button class="btn btn-primary btn-md ml-4 mb-2"(click)='opendialog()'>Create New About-Us</button>
+        <table class="table table-bordered ml-4 text-center ">
+            <thead class="bg-dark text-white">
+              <tr class="ml-5 ">
+                <th scope="col">About-Us Title</th>
+                <th scope="col">About-Us Description</th>
+                <th scope="col">About-Us Image </th>
+                <th scope="col">Controls</th>
+                
+              </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let item of admin.about" >
+                    <td>{{item.aboutustitle}}</td>
+                    <td>{{item.aboutusdes}}</td>
+                    <td><img src="../../../assets/images/{{item.aboutusimage}}"
+                        width="100px"
+                       
+                       style="border-radius: 10px;"></td>
+                   <td><button type="button" class="btn btn-primary btn-sm " (click)="openUpdateDailog(item)">Update</button><button type="button" class="btn btn-danger btn-sm" (click)="openDeleteDailog(item.aboutusid)">Delete</button></td>
+                  </tr>
+                  
+            </tbody>
+        </table>
+    </div>
+</div>
+</div></div>
+<ng-template #CreateDialog >
+    <h1 mat-dialog-title>Create New About-us</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="createForm">
+        <mat-form-field class="w-100">
+          <mat-label>About-us Title</mat-label>
+          <input matInput formControlName="aboutustitle"  />
+          <mat-error *ngIf="createForm.controls['aboutustitle'].hasError('required')">About-us Title is <strong>Required</strong></mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="w-100">
+          <mat-label>About-us Description</mat-label>
+          <input matInput formControlName="aboutusdes"  />
+          <mat-error *ngIf="createForm.controls['aboutusdes'].hasError('required')">About-us Description is <strong>Required</strong></mat-error>
+        </mat-form-field>
+   
+    
+          <label>About-us Image</label>
+          <div class="example-container">
+            <input type="file" #file formControlName="aboutusimage"(change)="UploadImage(file.files)">
+          </div>
+         
+       
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button class="btn btn-primary" mat-button (click)=
+"createAbout()"
+ [mat-dialog-close]=
+"true" cdkFocusInitial>Create</button>
+ <button  class="btn btn-danger" mat-button (click)=
+"closedialog()"
+ [mat-dialog-close]=
+"true" cdkFocusInitial>Close</button>
+    </div>
+   
+    
+  </ng-template>
+
+
+  <ng-template #deleteDialog >
+    <h1 mat-dialog-title>Are you sure to delete this Record?</h1>
+    <div mat-dialog-actions>
+      <button class="btn btn-primary" mat-button 
+ mat-dialog-close="yes"
+ cdkFocusInitial>Yes</button>
+ <button  class="btn btn-danger" mat-button 
+ mat-dialog-close="no"
+ cdkFocusInitial>No</button>
+    </div>
+   
+    
+  </ng-template>
+
+  <ng-template #updateDialog >
+    <h1 mat-dialog-title>Update About-us</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="updateForm">
+        <mat-form-field class="w-100">
+          <mat-label>About-us Title</mat-label>
+          <input matInput formControlName="aboutustitle" [(ngModel)]="previousData.aboutustitle" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-100">
+          <mat-label>About-us Description</mat-label>
+          <input matInput formControlName="aboutusdes" [(ngModel)]="previousData.aboutusdes" />
+        </mat-form-field>
+  
+      
+  
+      </form>
+      <label>About-us Image</label>
+      <div class="example-container">
+        <input type="file" #file formControlName="aboutusimage"(change)="UploadImage(file.files)">
+      </div>
+
+    </div>
+    <div mat-dialog-actions>
+        <button class="btn btn-primary" mat-button (click)=
+  "updateAbout()"
+   [mat-dialog-close]=
+  "true" cdkFocusInitial>Update</button>
+   <button  class="btn btn-danger" mat-button (click)=
+  "closedialog()"
+   [mat-dialog-close]=
+  "true" cdkFocusInitial>Close</button>
+      </div>
+  </ng-template>
+  

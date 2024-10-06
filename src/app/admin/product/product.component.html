@@ -1,0 +1,163 @@
+<app-admindashboard></app-admindashboard>
+<div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 offset-md-2"> 
+<div class="body-wrapper d-flex justify-content-center align-items-center" >
+    <div class="container-fluid">
+        <button class="btn btn-primary btn-md ml-4 mb-2"(click)='opendialog()' >Create New Product</button>
+        <table class="table table-bordered ml-4 text-center ">
+            <thead class="bg-dark text-white">
+              <tr class="ml-5 ">
+                <th scope="col">Product Name</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Product Description</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Controls</th>
+                
+              </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let item of admin.product" >
+                    <td>{{item.productname}}</td>
+                    <td>{{item.categoryname}}</td>
+                    <td>{{item.productdescription}}</td>
+                    <td>{{item.productprice}}</td>
+                    
+                    <td><img src="../../../assets/images/{{item.productimage}}"
+                        width="100px"
+                       
+                       style="border-radius: 10px;"></td>
+                   <td><button type="button" class="btn btn-primary btn-sm " (click)="openUpdateDailog(item)">Update</button><button type="button" class="btn btn-danger btn-sm" (click)="openDeleteDailog(item.productid)" >Delete</button></td>
+                  </tr>
+                  
+            </tbody>
+        </table>
+    </div>
+</div>
+</div></div>
+
+<!-- Create product dialog template -->
+<ng-template #productDialog>
+    <h1 mat-dialog-title>Create New Product</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="createForm">
+        <!-- Product Name Field -->
+        <mat-form-field class="w-100">
+          <mat-label>Product Name</mat-label>
+          <input matInput formControlName="productname" />
+          <mat-error *ngIf="createForm.controls['productname'].hasError('required')">
+            Product Name is <strong>Required</strong>
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Product Description Field -->
+        <mat-form-field class="w-100">
+          <mat-label>Product Description</mat-label>
+          <input matInput formControlName="productdescription" />
+          <mat-error *ngIf="createForm.controls['productdescription'].hasError('required')">
+            Product Description is <strong>Required</strong>
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Product Price Field -->
+        <mat-form-field class="w-100">
+          <mat-label>Product Price</mat-label>
+          <input matInput type="number" formControlName="productprice" />
+          <mat-error *ngIf="createForm.controls['productprice'].hasError('required')">
+            Product price is <strong>Required</strong>
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Product Image Field -->
+        <label>Product Image</label>
+        <div class="example-container">
+          <input type="file" #file formControlName="productimage" (change)="UploadImage(file.files)" />
+        </div>
+  
+        <!-- Category Selection Field -->
+        <mat-form-field class="w-100">
+          <mat-label>Category Name</mat-label>
+          <mat-select formControlName="categoryname">
+            <mat-option *ngFor="let cat of admin.category" [value]="cat.categoryname">
+              {{ cat.categoryname }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="createForm.controls['categoryname'].hasError('required')">
+            Category is <strong>Required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    
+    <!-- Dialog Actions -->
+    <div mat-dialog-actions>
+      <button class="btn btn-primary" mat-button (click)="createproduct()" [mat-dialog-close]="true" cdkFocusInitial>
+        Create
+      </button>
+      <button class="btn btn-danger" mat-button (click)="closedialog()" [mat-dialog-close]="true">
+        Close
+      </button>
+    </div>
+  </ng-template>
+  
+  
+  <!--the delete dialog template-->
+  <ng-template #deleteproductDialog >
+    <h1 mat-dialog-title>Are you sure to delete this Product?</h1>
+    <div mat-dialog-actions>
+      <button class="btn btn-primary" mat-button 
+ mat-dialog-close="yes"
+ cdkFocusInitial>Yes</button>
+ <button  class="btn btn-danger" mat-button 
+ mat-dialog-close="no"
+ cdkFocusInitial>No</button>
+    </div>
+  </ng-template>
+
+  <ng-template #updateproductDialog >
+    <h1 mat-dialog-title>Update product</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="updateForm">
+        <mat-form-field class="w-100">
+          <mat-label>product Name</mat-label>
+          <input matInput formControlName="productname" [(ngModel)]="previousData.productname" />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+            <mat-label>product Description</mat-label>
+            <input matInput formControlName="productdescription" [(ngModel)]="previousData.productdescription" />
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>product price</mat-label>
+            <input matInput formControlName="productprice" [(ngModel)]="previousData.productprice" />
+          </mat-form-field>
+          <mat-form-field class="w-100">
+            <mat-label>Category Name</mat-label>
+            <mat-select formControlName="categoryname" [ngModel]="previousData.categoryname">
+              <mat-option *ngFor="let cat of admin.category" [value]="cat.categoryname" >
+                {{ cat.categoryname }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="createForm.controls['categoryname'].hasError('required')">
+              Category is <strong>Required</strong>
+            </mat-error>
+          </mat-form-field>
+      </form>
+      <label>Category Image</label>
+      <div class="example-container">
+        <input type="file" #file formControlName="categoryimage"(change)="UploadImage(file.files)">
+      </div>
+
+    </div>
+    <div mat-dialog-actions>
+        <button class="btn btn-primary" mat-button (click)=
+  " updatetheproduct()"
+   [mat-dialog-close]=
+  "true" cdkFocusInitial>Update</button>
+   <button  class="btn btn-danger" mat-button (click)=
+  "closedialog()"
+   [mat-dialog-close]=
+  "true" cdkFocusInitial>Close</button>
+      </div>
+  </ng-template>

@@ -1,0 +1,78 @@
+<header>
+    <div class="main-nav">
+       <div class="logo">
+           <img src="../../../assets/HomeTemp/images/logo/FOOD_STATION__1_-removebg-preview.png" width="100px" height="100px">
+       </div>
+       <div class="menu-toggle">
+           <i class="fal fa-bars"></i>
+       </div>
+        <div class="menu">
+            <ul>
+                <li><a routerLink="/home/main">Home</a></li>
+                <li><a routerLink="/home/about-us">About Us</a></li>
+
+                <li><a routerLink="/home/menue">Recipe Menue</a></li>
+                <li><a routerLink="/home/contact-us">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- //////////////////////header-End/////////////////////// -->
+<!-- ====================================================== -->
+<!-- //////////////////////Main-Started/////////////////////// -->
+<main>
+    <section class="abt">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="wrapper">
+                        <h2> Menue</h2>
+                        <ol>
+                            <li>Home<i class="fal fa-long-arrow-right"></i></li>
+                            <li>Menue-belongs Category</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====================================================== -->
+    <section class="feature-se">
+        <div class="shap-01"></div>
+        <div class="shap-02"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading">
+                        <h2>Menue</h2>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let item of products" data-aos="fade-up">
+                    <div class="wrapper">
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <div class="image">
+                                        <img src="../../../assets/images/{{item.productimage}}" width="300px" height="300px">
+                                    </div>
+                                    <h4><strong>{{item.productname}}</strong><div class="line"></div><span>${{item.productprice}}</span></h4>
+                                    <p>{{item.productdescription}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </section>
+    <!-- ====================================================== -->
+   
+    
+    <!-- ====================================================== -->
+    
+   
+</main>
+<app-footer></app-footer>
+

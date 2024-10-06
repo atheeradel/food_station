@@ -1,0 +1,192 @@
+  <!-- //////////////////////header-started/////////////////////// -->
+  <header>
+    <div class="main-nav">
+       <div class="logo">
+           <img src="../../../assets/HomeTemp/images/logo/FOOD_STATION__1_-removebg-preview.png" width="100px" height="100px">
+       </div>
+       <div class="menu-toggle">
+           <i class="fal fa-bars"></i>
+       </div>
+        <div class="menu">
+            <ul>
+                <li><a routerLink="/home/main">Home</a></li>
+                <li><a routerLink="/home/about-us">About Us</a></li>
+
+                <li><a routerLink="/home/menue">Recipe Menue</a></li>
+                <li><a routerLink="/home/contact-us">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- //////////////////////header-End/////////////////////// -->
+<!-- ====================================================== -->
+<!-- //////////////////////Main-Started/////////////////////// -->
+<main>
+    <section class="abt">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="wrapper">
+                        <h2>About Us</h2>
+                        <ol>
+                            <li>Home<i class="fal fa-long-arrow-right"></i></li>
+                            <li>About Us</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================================================================= -->
+    <section class="bg-01">
+        <div class="container">
+            <div class="row" *ngFor="let item of admin.about">
+                <div class="col-md-6 col-sm-12">
+                    <div class="wrapper">
+                        <div class="content">
+                            <ol>
+                                <li><img src="../../../assets/images/abt/1.jpg"></li>
+                                 <li><img src="../../../assets/images/{{item.aboutusimage}}"></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="wrapper">
+                        <div class="content">
+                            <h5>Welcome at </h5>
+                            <h2>{{item.aboutustitle}}</h2>
+                            <p>{{item.aboutusdes}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer-01">
+         <div class="container">
+             <div class="row">
+                 <div class="col-12">
+                     <div class="heading">
+                         <h2>Our Daily<span>Offers</span></h2>
+                     </div>
+                 </div>
+                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                     <div class="wrapper">
+                         <div class="image"><!--assets/images/abt/600-400.jpg-->
+                             <img src="../../../assets/HomeTemp/images/abt/600-400.jpg">
+                             <div class="inner-content">
+                                 <ol>
+                                     <li>
+                                         <h6>Lunch time</h6>
+                                         <h3>20% <span>off</span></h3>
+                                         <p>we love food,lots of different and food,
+                                         just like you</p>
+                                         <a>visit Now</a>
+                                     </li>
+                                 </ol>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                     <div class="wrapper">
+                         <div class="content">
+                             <ol>
+                                 <li>
+                                     <img src="../../../assets/HomeTemp/images/abt/6.jpg">
+                                     <h4>Spicy Club<span>$30</span></h4>
+                                     <p>Pork, chicken and vegetable fried rolls served with 
+                                     lettuce wraps</p>
+                                 </li>
+                                 <li>
+                                     <img src="../../../assets/HomeTemp/images/abt/4.jpg">
+                                     <h4>Almond Baked Brie<span>$45</span></h4>
+                                     <p>Pork, chicken and vegetable fried rolls served with 
+                                     lettuce wraps</p>
+                                 </li>
+                                 <li>
+                                     <img src="../../../assets/HomeTemp/images/abt/5.jpg">
+                                     <h4>Tuscan Flatbread<span>$20</span></h4>
+                                     <p>Pork, chicken and vegetable fried rolls served with 
+                                     lettuce wraps</p>
+                                 </li>
+                             </ol>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </section>
+    <!-- ====================================================== -->
+    <section class="bg-05">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading">
+                        <h2>Explore Our Team</h2>
+                    </div>
+                </div>
+
+                <div class="main-team-card d-flex">
+                    <div class="team-setup">
+                        <div class="team-items">
+                            <div class="team-user">
+                            <img src="assets/images/team/1.jpg">
+                            </div>
+                            <div class="team-name">
+                            <h2>Mark Anthony</h2>
+                            <b>Founder & CEO</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-setup">
+                        <div class="team-items">
+                            <div class="team-user">
+                            <img src="assets/images/team/2.jpg">
+                            </div>
+                            <div class="team-name">
+                            <h2>Jessica Lee</h2>
+                            <b>Chinese Kitchen Lead</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-setup">
+                        <div class="team-items">
+                            <div class="team-user">
+                            <img src="assets/images/team/3.jpg">
+                            </div>
+                            <div class="team-name">
+                            <h2>John Bennett</h2>
+                            <b>French Kitchen Lead</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-setup">
+                        <div class="team-items">
+                            <div class="team-user">
+                            <img src="assets/images/team/4.jpg">
+                            </div>
+                            <div class="team-name">
+                            <h2>ANDERSON JHON</h2>
+                            <b>Sous Chef</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+<app-footer>
+
+</app-footer>

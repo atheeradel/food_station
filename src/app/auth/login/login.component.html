@@ -1,0 +1,61 @@
+ <!--  Body Wrapper -->
+ <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+   data-sidebar-position="fixed" data-header-position="fixed">
+   <div
+     class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+     <div class="d-flex align-items-center justify-content-center w-100">
+       <div class="row justify-content-center w-100">
+         <div class="col-md-8 col-lg-6 col-xxl-3">
+           <div class="card mb-0">
+             <div class="card-body">
+               <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                 <img src="../../../assets/AdminTemp/images/logos/web_Brain-removebg-preview.png" width="180" alt="">
+               </a>
+             
+               <form >
+                 <div class="mb-3">
+                   <label for="exampleInputEmail1" class="form-label">Email</label>
+                   <input type="email" class="form-control" id="exampleInputEmail1" [formControl]="email" placeholder="Enter a valid email address" aria-describedby="emailHelp">
+                   <span class="text-danger" *ngIf="email.hasError('email') && !email.hasError('required')">Please enter a valid email address</span><span class="textdanger"*ngIf="email.hasError('required')" >Email is required</span>
+                 </div>
+                 <div class="mb-4">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    [formControl]="password"
+                    placeholder="Enter your password"
+                  />
+                  
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                   
+                    <div *ngIf="password.errors?.['required']">
+                      Password is required.
+                    </div>
+                   
+                    <div *ngIf="password.errors?.['minlength']">
+                      Password must be at least 8 characters long.
+                    </div>
+                  </div>
+                </div>
+                
+                 <div class="d-flex align-items-center justify-content-between mb-4">
+                   <div class="form-check">
+                     <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
+                     <label class="form-check-label text-dark" for="flexCheckChecked">
+                       Remeber this Device
+                     </label>
+                   </div>
+                  
+                 </div>
+                 <button  class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" (click)="Login()">Sign In</button>
+               
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

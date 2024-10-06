@@ -1,0 +1,114 @@
+  <!-- //////////////////////header-started/////////////////////// -->
+  <header>
+    <div class="main-nav">
+       <div class="logo">
+        <img src="../../../assets/HomeTemp/images/logo/FOOD_STATION__1_-removebg-preview.png" width="100px" height="100px">
+       </div>
+       <div class="menu-toggle">
+           <i class="fal fa-bars"></i>
+       </div>
+        <div class="menu">
+            <ul>
+                <li><a routerLink="/home/main">Home</a></li>
+                <li><a routerLink="/home/about-us">About Us</a></li>
+
+                <li><a routerLink="/home/menue">Recipe Menue</a></li>
+                <li><a routerLink="/home/contact-us">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- //////////////////////header-End/////////////////////// -->
+<!-- ====================================================== -->
+<!-- //////////////////////Main-Started/////////////////////// -->
+<main>
+    <section class="abt">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="wrapper">
+                        <h2>Contact Us</h2>
+                        <ol>
+                            <li>Home<i class="fal fa-long-arrow-right"></i></li>
+                            <li>Contact Us</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================================================================= -->
+    <section class="bg-0-b">
+        <div class="container">
+            <div class="row">
+                <div class="main-card-contact d-flex">
+                    <div class="sup-card-contact">
+                        <div class="sup-content">
+                            <div class="head-content">
+                                <h2>Leave A Message Here</h2>
+                                <p>We're here to help! Reach out to us for reservations, inquiries, or any questions about our menu. We value your feedback!</p>
+                            </div>
+
+                            <div class="contact-title">
+                                <h2>Contact Details</h2>
+                                <ol>
+                                    <li><i class="flaticon-placeholder"></i>JO</li>
+                                    <li><i class="flaticon-call"></i>+962 790903887 </li>
+                                    <li><i class="flaticon-email"></i>info@foodstation.com</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sup-card-contact-0a">
+                        <div class="contact-a1">
+                            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                  <input type="text" formControlName="name" class="form-control" placeholder="Enter Your Name">
+                                  <div *ngIf="contactForm.controls['name'].invalid && contactForm.controls['name'].touched" class="text-danger">
+                                    Name is required.
+                                  </div>
+                                </div>
+                              
+                                <div class="form-group">
+                                  <input type="email" formControlName="email" class="form-control" placeholder="Enter Your Email">
+                                  <div *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched" class="text-danger">
+                                    <div *ngIf="contactForm.controls['email'].errors?.['required']">Email is required.</div>
+                                    <div *ngIf="contactForm.controls['email'].errors?.['email']">Invalid email format.</div>
+                                  </div>
+                                </div>
+                              
+                                <div class="form-group">
+                                  <input type="text" formControlName="subject" class="form-control" placeholder="Enter Your Subject">
+                                  <div *ngIf="contactForm.controls['subject'].invalid && contactForm.controls['subject'].touched" class="text-danger">
+                                    Subject is required.
+                                  </div>
+                                </div>
+                              
+                                <div class="form-group">
+                                  <textarea formControlName="message" class="form-control" rows="6" placeholder="Message"></textarea>
+                                  <div *ngIf="contactForm.controls['message'].invalid && contactForm.controls['message'].touched" class="text-danger">
+                                    Message is required.
+                                  </div>
+                                </div>
+                              
+                                <!-- Disabled until form is valid -->
+                                <button type="submit" class="btn btn-outline-danger" [disabled]="contactForm.invalid">
+                                  Send
+                                </button>
+                              </form>
+                              
+                              
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- ========================================================================= -->
+    <section class="mab-01 p-0">
+        <div class="mapouter"><div class="gmap_canvas"><iframe src="https://maps.google.com/maps?q=Station%20one%20Mafraq&amp;t=k&amp;z=11&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" style="width: 1080px; height: 510px;"></iframe><style>.mapouter{display:table;}.gmap_canvas{overflow:hidden;position:relative;height:510px;width:1080px;background:#fff;}</style><a href="https://www.taxuni.com/1040-ez-form/">1040 EZ Form</a><style>.gmap_canvas iframe{position:relative !important;z-index:2 !important;}.gmap_canvas a{color:#fff !important;position:absolute !important;top:0 !important;left:0 !important;z-index:0 !important;}</style></div></div>
+    </section>
+</main>
+<app-footer></app-footer>

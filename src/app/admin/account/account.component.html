@@ -1,0 +1,57 @@
+<app-admindashboard></app-admindashboard>
+<div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 offset-md-2"> <!-- Adjust column size and centering -->
+          <div class="card m-5 w-100 justify-content-center">
+            <div class="card-body m-3 w-100">
+              <h5 class="card-title fw-semibold mb-4">My Account</h5>
+              <form><div *ngFor="let user of admin.adminuser">
+
+              
+                
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label d-inline-block m-1">Email</label>
+                    <input type="Email" class="form-control d-inline-block w-100" id="exampleInputPassword1" value={{user.email}}>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label d-inline-block m-1">Password</label>
+                    <input type="password" class="form-control d-inline-block w-100" id="exampleInputPassword1" value={{user.password}}>
+                </div>
+            
+            <button type="button" class="btn btn-primary" (click)="openUpdateDailog(user)"
+            >Update</button></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+   
+    </div>
+  </div>
+  <ng-template #accountDialog >
+    <h1 mat-dialog-title>Update account</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="updateForm">
+        <mat-form-field class="w-100">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" [(ngModel)]="previousData.email" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-100">
+          <mat-label>password</mat-label>
+          <input type="password" matInput formControlName="password" [(ngModel)]="previousData.password" />
+        </mat-form-field>
+  
+        
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)=
+"updateprofile()"
+ [mat-dialog-close]=
+"true" cdkFocusInitial>Update</button>
+    </div>
+  </ng-template>
+  

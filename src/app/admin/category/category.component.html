@@ -1,0 +1,104 @@
+<app-admindashboard></app-admindashboard>
+<div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 offset-md-2"> 
+<div class="body-wrapper d-flex justify-content-center align-items-center" >
+    <div class="container-fluid">
+      
+
+        <button class="btn btn-primary btn-md ml-4 mb-2" (click)='opendialog()'>Create New Category</button>
+        <table class="table table-bordered ml-4 text-center ">
+            <thead class="bg-dark text-white">
+              <tr class="ml-5 ">
+                <th scope="col">Category Name</th>
+                <th scope="col">Category Image</th>
+                <th scope="col">Controls</th>
+                
+              </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let item of admin.category ">
+                    <td>{{item.categoryname}}</td>
+                    
+                    <td><img src="../../../assets/images/{{item.categoryimage}}"
+                        width="100px"
+                       
+                       style="border-radius: 10px;"></td>
+                   <td><button type="button" class="btn btn-primary btn-sm "(click)='openUpdateDailog(item)' >Update</button><button type="button" class="btn btn-danger btn-sm" (click)="openDeleteDailog(item.categoryid)">Delete</button></td>
+                  </tr>
+                  
+            </tbody>
+        </table>
+    </div>
+</div>
+</div></div>
+
+<!-- the create dialog template -->
+<ng-template #CategoryDialog >
+    <h1 mat-dialog-title>Create New Category</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="createForm">
+        <mat-form-field class="w-100">
+          <mat-label>category Name</mat-label>
+          <input matInput formControlName="categoryname"  />
+          <mat-error *ngIf="createForm.controls['categoryname'].hasError('required')">Category Name is <strong>Required</strong></mat-error>
+        </mat-form-field>
+          <label>Category Image</label>
+          <div class="example-container">
+            <input type="file" #file formControlName="categoryimage"(change)="UploadImage(file.files)">
+          </div>
+            </form>
+    </div>
+    <div mat-dialog-actions>
+      <button class="btn btn-primary" mat-button (click)=
+"crcategory()"
+ [mat-dialog-close]=
+"true" cdkFocusInitial>Create</button>
+ <button  class="btn btn-danger" mat-button (click)=
+"closedialog()"
+ [mat-dialog-close]=
+"true" cdkFocusInitial>Close</button>
+    </div>
+  </ng-template>
+
+  <!--the delete dialog template-->
+  <ng-template #deletecategoryDialog >
+    <h1 mat-dialog-title>Are you sure to delete this Category?</h1>
+    <div mat-dialog-actions>
+      <button class="btn btn-primary" mat-button 
+ mat-dialog-close="yes"
+ cdkFocusInitial>Yes</button>
+ <button  class="btn btn-danger" mat-button 
+ mat-dialog-close="no"
+ cdkFocusInitial>No</button>
+    </div>
+  </ng-template>
+
+  <!--the update dialog template-->
+  <ng-template #updatecategoryDialog >
+    <h1 mat-dialog-title>Update Category</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="updateForm">
+        <mat-form-field class="w-100">
+          <mat-label>Category Name</mat-label>
+          <input matInput formControlName="categoryname" [(ngModel)]="previousData.categoryname" />
+        </mat-form-field>
+      </form>
+      <label>Category Image</label>
+      <div class="example-container">
+        <input type="file" #file formControlName="categoryimage"(change)="UploadImage(file.files)">
+      </div>
+
+    </div>
+    <div mat-dialog-actions>
+        <button class="btn btn-primary" mat-button (click)=
+  " updatethecategory()"
+   [mat-dialog-close]=
+  "true" cdkFocusInitial>Update</button>
+   <button  class="btn btn-danger" mat-button (click)=
+  "closedialog()"
+   [mat-dialog-close]=
+  "true" cdkFocusInitial>Close</button>
+      </div>
+  </ng-template>

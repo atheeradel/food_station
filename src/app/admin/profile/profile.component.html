@@ -1,0 +1,70 @@
+<app-admindashboard></app-admindashboard>
+<div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 offset-md-2"> <!-- Adjust column size and centering -->
+          <div class="card m-5 w-100 justify-content-center">
+            <div class="card-body m-3 w-100">
+              <h2 class="card-title fw-semibold mb-4">My Profile</h2>
+              <form><div *ngFor="let user of admin.adminuser">
+
+              
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label d-inline-block m-2 " >First Name</label>
+                  <input type="text" class="form-control h-50 w-25 d-inline-block"  id="exampleInputEmail1" aria-describedby="emailHelp" value={{user.firstname}} >
+                  <label for="exampleInputEmail1" class="form-label d-inline-block m-2">Last Name</label>
+                  <input type="text" class="form-control h-50 w-25 d-inline-block"  id="exampleInputEmail1" aria-describedby="emailHelp" value={{user.lastname}}>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label d-inline-block m-1">Phone Number</label>
+                  <input type="text" class="form-control d-inline-block w-75" id="exampleInputPassword1" value={{user.phonenumber}} >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label d-inline-block m-1">User Name</label>
+                    <input type="text" class="form-control d-inline-block w-75" id="exampleInputPassword1" value={{user.username}}>
+                </div>
+           
+                <button type="button" class="btn btn-primary" (click)="openUpdateDailog(user)"
+                >Update</button> </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+   
+    </div>
+  </div>
+  <ng-template #profileDialog >
+    <h1 mat-dialog-title>Update Profile</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="updateForm">
+        <mat-form-field class="w-100">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstname" [(ngModel)]="previousData.firstname" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastname" [(ngModel)]="previousData.lastname" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-100">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phonenumber" [(ngModel)]="previousData.phonenumber" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-100">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" [(ngModel)]="previousData.username" />
+        </mat-form-field>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)=
+"updateprofile()"
+ [mat-dialog-close]=
+"true" cdkFocusInitial>Update</button>
+    </div>
+  </ng-template>
+  

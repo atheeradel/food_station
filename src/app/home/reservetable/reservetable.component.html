@@ -1,0 +1,96 @@
+<header>
+    <div class="main-nav">
+       <div class="logo">
+        <img src="../../../assets/HomeTemp/images/logo/FOOD_STATION__1_-removebg-preview.png" width="100px" height="100px">
+       </div>
+       <div class="menu-toggle">
+           <i class="fal fa-bars"></i>
+       </div>
+        <div class="menu">
+            <ul>
+                <li><a routerLink="/home/main">Home</a></li>
+                <li><a routerLink="/home/about-us">About Us</a></li>
+
+                <li><a routerLink="/home/menue">Recipe Menue</a></li>
+                <li><a routerLink="/home/contact-us">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- //////////////////////header-End/////////////////////// -->
+<!-- ====================================================== -->
+<!-- //////////////////////Main-Started/////////////////////// -->
+<main>
+    <section class="abt">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="wrapper">
+                        <h2>Reserve Table</h2>
+                        <ol>
+                            <li>Home<i class="fal fa-long-arrow-right"></i></li>
+                            <li>Reserve</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-0-b">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="reservation-form">
+                  <h2>Reservation</h2>
+                  <form (ngSubmit)="bookTable(reservationForm)" #reservationForm="ngForm">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="reservationDate">Select Date:</label>
+                        <input type="date" id="reservationDate" name="reservationDate" [(ngModel)]="selectedDate" [min]="today" (change)="fetchAvailableSlots()" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="duration">Select Duration (Hours)</label>
+                        <input type="number" name="reservationDuration" [(ngModel)]="duration" (change)="fetchAvailableSlots()" required>
+                      </div>
+                    </div>
+                  
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="time">Available Time Slots</label>
+                        <select name="selectedTimeSlot" [(ngModel)]="selectedTimeSlot" (change)="updatePrice()" required>
+                          <option *ngFor="let slot of availableSlots" [ngValue]="slot">{{ slot.startTime }} - {{ slot.endTime }}</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="price">Total Price</label>
+                        <input type="text" [value]="totalPrice" readonly>
+                      </div>
+                    </div>
+                  
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="customerName" ngModel required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="email">Your Email</label>
+                        <input type="email" name="customerEmail" ngModel required>
+                      </div>
+                    </div>
+                  
+                    
+                  
+                    <button type="submit" class="mb-2 mt-2">Book Table</button>
+                  </form>
+                  
+                </div>
+              </div>
+              
+        </div>
+    </section>
+
+
+</main>
+
+<app-footer></app-footer>
